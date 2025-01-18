@@ -1,0 +1,19 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 100px); /* Adjust the 100px based on your navbar and footer height */
+}
+
+app-footer {
+  background: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}

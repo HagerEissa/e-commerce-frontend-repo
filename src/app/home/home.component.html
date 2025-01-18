@@ -1,0 +1,84 @@
+<div class="home-parent-container">
+  <div class="home-container">
+    <!-- Sale Section -->
+    <div class="sale-section">
+      <p class="sale-title">SALE UP TO 70% OFF</p>
+      <p class="sale-subtitle">EXTRA 15% OFF ON ALL SALE ITEMS</p>
+      <p class="sale-code">USE CODE: EG15</p>
+      <div class="sale-buttons">
+        <button>Women</button>
+        <button>Men</button>
+        <button>Kids</button>
+        <button>Home</button>
+        <button>Baby</button>
+      </div>
+      <p class="sale-p">Offer valid on selected items online until 18.01.2025.</p>
+    </div>
+
+    <!-- Banner Section -->
+    <div class="banner-section">
+      <a href="#"><img src="img/newSeasonPreppy3.PNG" alt="Banner Image " class="iimmaagg" /></a>
+      <!-- <div class="banner-text">
+        <h2>New season preppy</h2>
+        <p>Sporty takes a luxe turn with sleek details.</p>
+        <button>Shop Now</button>
+      </div>
+      <div class="banner-images">
+        <img src="path-to-your-image.jpg" alt="Banner Image 1" />
+        <img src="path-to-your-image.jpg" alt="Banner Image 2" />
+      </div> -->
+    </div>
+
+    <!-- Trending Section -->
+    <div class="trending-section">
+      <h4>Trending Now</h4>
+      <div class="trending-now-section">
+        <div class="category-buttons">
+          <button class="category-button"  >For you</button>
+          <button class="category-button" *ngFor="let category of categoryList" >
+            {{ category.name }}
+          </button>
+        </div>
+
+      <div class="trending-products">
+        <div class="product-carousel">
+          <div class="carousel-inner">
+            <ng-container *ngFor="let TP of trendProductes; let i = index">
+              <div class="product-card" [routerLink]="['product/'+TP._id]">
+                <img [src]="imageURL + TP.imgURL" alt="Product Image" />
+                <p >{{ TP.name }}</p>
+                <p class="b">EGP {{ TP.price }}</p>
+              </div>
+            </ng-container>
+          </div>
+          <button class="carousel-arrow left-arrow" (click)="scrollLeft()">&#10094;</button>
+          <button class="carousel-arrow right-arrow" (click)="scrollRight()">&#10095;</button>
+        </div>
+        <!-- Add more product cards as needed -->
+      </div>
+    </div>
+<br>
+<br>
+     <!-- Recommended Section -->
+    <div class="trending-section">
+      <h4>Recommended For you</h4>
+      <div class="trending-products">
+        <div class="product-carousel">
+          <div class="carousel-inner">
+            <ng-container *ngFor="let TP of trendProductes; let i = index">
+              <div class="product-card" [routerLink]="['product/'+TP._id]">
+                <img [src]="imageURL + TP.imgURL" alt="Product Image" />
+                <p >{{ TP.name }}</p>
+                <p class="b">EGP {{ TP.price }}</p>
+              </div>
+            </ng-container>
+          </div>
+          <button class="carousel-arrow left-arrow" (click)="scrollLeft()">&#10094;</button>
+          <button class="carousel-arrow right-arrow" (click)="scrollRight()">&#10095;</button>
+        </div>
+        <!-- Add more product cards as needed -->
+      </div>
+    </div>
+  </div>
+
+</div>

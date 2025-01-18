@@ -1,0 +1,55 @@
+
+
+<!-- <nav class="navbar">
+  <div class="navbar-icons">
+      <a routerLink="register">Create An Account</a>
+      <a routerLink="login">Sign In</a>
+      <a href="#">Find Stores</a>
+  </div>
+</nav> -->
+
+<nav class="navbar">
+  <div class="navbar-icons">
+    <ng-container *ngIf="!isLoggedIn; else loggedIn">
+      <a routerLink="register">Create An Account</a>
+      <a routerLink="login">Sign In</a>
+      <a href="#">Find Stores</a>
+    </ng-container>
+    <ng-template #loggedIn>
+      <a href="#" (click)="logout()">Logout</a>
+      <a href="#">Find Stores</a>
+    </ng-template>
+  </div>
+</nav>
+
+<nav class="navbar">
+  <div class="navbar-search">
+    <input type="text" placeholder="What are you looking for?" (keyup.enter)="onSearch($event)">
+  </div>
+  <div class="navbar-logo">
+    <img src="img/logo.png" alt="Logo" routerLink="home">
+  </div>
+  <div class="navbar-icons">
+    <!-- <a href="#"><fa-icon [icon]="icon"></fa-icon></a> -->
+    <a href="#"><img src="img/heart.PNG" alt="BAG"></a>
+    <a href="#"><img src="img/bag.PNG" alt="BAG"></a>
+
+
+
+  </div>
+</nav>
+
+<nav class="navbar">
+  <ul class="navbar-menu">
+    <ng-container *ngFor ="let c of categoryList; let i=index">
+      <li ><a (click)="searchCategory(c._id!)">{{c.name}}</a></li>
+    </ng-container>
+      <!-- <li><a href="#">Men</a></li>
+      <li><a href="#">Baby</a></li>
+      <li><a href="#">Kids</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Sport</a></li>
+      <li><a href="#">Sale</a></li> -->
+  </ul>
+
+</nav>

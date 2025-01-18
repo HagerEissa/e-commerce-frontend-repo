@@ -1,0 +1,46 @@
+<form class="registration-form" [formGroup]="registerForm">
+  <h2>Become a Member</h2>
+  <p>Become a member — don't miss out on deals, offers, discounts and bonus vouchers.</p>
+
+  <div class="form-group">
+    <label for="fullName">Full Name</label>
+    <input type="text" id="fullName" name="fullName" formControlName="username" placeholder="Full Name" required />
+    <div class="msg" *ngIf="registerForm.get('username')!.invalid && registerForm.get('username')!.touched">
+      <span *ngIf="registerForm.get('username')!.errors?.['required']">*username is required</span>
+      <span *ngIf="registerForm.get('username')!.errors?.['minlength']">*username min chars should be 5</span>
+
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" id="email" name="email" formControlName="email" placeholder="Email address" required />
+    <div class="msg" *ngIf="registerForm.get('email')!.invalid && registerForm.get('email')!.touched">
+      <span *ngIf="registerForm.get('email')!.errors?.['required']">*email is required</span>
+      <span *ngIf="registerForm.get('email')!.errors?.['email']">*wrong email format</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" formControlName="password" placeholder="Password" required />
+    <div class="msg" *ngIf="registerForm.get('password')!.invalid && registerForm.get('password')!.touched">
+      <span *ngIf="registerForm.get('password')!.errors?.['required']">*password is required</span>
+      <span *ngIf="registerForm.get('password')!.errors?.['passwordstrength']">*pasword must contains uppercase/lowercase/numbers and 8 chars</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="checkbox" id="offers" checked />
+    <label for="offers">Yes, email me offers, style updates, and special invites to sales and events.</label>
+  </div>
+
+  <p>
+    By clicking "Become a member", I agree to the H&M Membership
+    <a href="#">Terms & Conditions</a>.
+  </p>
+
+  <button type="submit" (click)="register()" [disabled]="registerForm.invalid" >Become a Member</button>
+
+  <p>Already have an account? <a (click)="signin()">Sign in here</a>.</p>
+</form>

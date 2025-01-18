@@ -1,0 +1,24 @@
+<div class="category-form-container">
+  @if(isEdit){
+    <h1>update brand</h1>
+  }@else{<h1>Add New brand</h1>}
+
+  <form class="category-form">
+    <div class="form-group">
+      <mat-form-field class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" [(ngModel)]="name" name="name" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      @if(isEdit){
+        <button mat-raised-button color="primary" [disabled]="!name" (click)="update()">update</button>
+      }@else{
+        <button mat-raised-button color="primary" [disabled]="!name" (click)="add()">Add</button>
+      }
+
+
+    </div>
+  </form>
+</div>
