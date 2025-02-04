@@ -1,1 +1,58 @@
-<p>product-details works!</p>
+<div class="product-container">
+  <!-- Product Gallery -->
+  <div class="product-gallery">
+    <img [src]="imageURL + product?.imgURL" class="main-image" alt="Product Image">
+    <!-- <div class="thumbnail-container">
+      <img [src]="imageURL + product?.imgURL" class="thumbnail">
+    </div> -->
+  </div>
+
+  <!-- Product Information -->
+  <div class="product-info">
+    <h1>{{ product?.name }}</h1>
+
+    <!-- <p class="price">EGP{{ product?.price }}</p> -->
+    <p class="price">
+      <span *ngIf="product?.discount > 0" class="discounted-price">
+        EGP {{ discountedPrice | number:'1.0-0' }}
+      </span>
+      <span *ngIf="product?.discount > 0" class="old-price">
+        EGP {{ product?.price | number:'1.0-0' }}
+      </span>
+      <span *ngIf="product?.discount > 0" class="discount-percentage">
+        (SAVE {{ discountPercentage | number:'1.0-0' }}%)
+      </span>
+      <span *ngIf="product?.discount === 0">
+        EGP {{ product?.price | number:'1.0-0' }}
+      </span>
+    </p>
+
+    <!-- Size Selection -->
+    <div class="size-selection">
+      <label>Size:</label>
+      <!-- <button *ngFor="let size of product.sizes"
+              (click)="selectSize(size)"
+              [class.selected]="size === product.selectedSize">
+        {{ size }}
+      </button> -->
+
+    </div>
+
+    <!-- Buttons: Add to Cart & Add to Favourites -->
+    <div class="buttons-container">
+      <button class="add-to-cart">Add to Basket</button>
+      <!-- <button class="add-to-favorites" (click)="toggleFavorite()">
+        <span *ngIf="!isFavorite">♡ Add to Favourites</span>
+        <span *ngIf="isFavorite">❤️ Added to Favourites</span> -->
+      <!-- </button> -->
+    </div>
+
+    <!-- Product Description -->
+    <pre><p class="description">{{ product?.desc}}</p></pre>
+
+    <!-- Product Details -->
+    <!-- <ul class="details">
+      <li *ngFor="let detail of product.details">{{ detail }}</li>
+    </ul> -->
+  </div>
+</div>

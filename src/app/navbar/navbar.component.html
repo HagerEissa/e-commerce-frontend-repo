@@ -15,16 +15,22 @@
       <a routerLink="login">Sign In</a>
       <a href="#">Find Stores</a>
     </ng-container>
+
     <ng-template #loggedIn>
+      <a routerLink="profile">Welcome, {{ userName }}</a>
       <a href="#" (click)="logout()">Logout</a>
       <a href="#">Find Stores</a>
+      <ng-container *ngIf="isAdmin">
+
+        <a routerLink="adminDashboard">Dashboard</a>
+      </ng-container>
     </ng-template>
   </div>
 </nav>
 
 <nav class="navbar">
   <div class="navbar-search">
-    <input type="text" placeholder="What are you looking for?" (keyup.enter)="onSearch($event)">
+    <input type="text" placeholder="What are you looking for?" [(ngModel)]="searchTerm" (keyup.enter)="onSearch($event)">
   </div>
   <div class="navbar-logo">
     <img src="img/logo.png" alt="Logo" routerLink="home">

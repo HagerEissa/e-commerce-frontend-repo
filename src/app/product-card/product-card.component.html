@@ -1,0 +1,13 @@
+<div class="product-card" [routerLink]="'/home/product/'+ product._id">
+  <!-- <img [src]="product.images[0]" alt="Product Image" class="product-image"> -->
+  <img [src]="imageURL + product.imgURL" alt="Product Image" />
+  <div class="product-details">
+    <h6>{{ product.name }}</h6>
+    <p>{{ product.shortDesc }}</p>
+
+    <div class="price-section">
+      <span class="price">EGP{{ product.price }}</span>
+      <button mat-flat-button color="primary">Add to Cart</button>
+    </div>
+  </div>
+</div>

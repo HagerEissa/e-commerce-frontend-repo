@@ -13,9 +13,12 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent {
   isLoggedIn: boolean = false;
+  userName:string ='';
+  isAdmin: boolean = false;
   constructor(private _categoryS:CategoryService,private _router:Router,private _authS:AuthService ){}
   icon = faHeart;
   categoryList:any[]=[];
+  searchTerm!:string;
   ngOnInit(){
     this._categoryS.getCategories().subscribe(data=>{
       this.categoryList=data;
@@ -24,10 +27,20 @@ export class NavbarComponent {
     this._authS.getAccessToken().subscribe(token => {
       this.isLoggedIn = !!token;
     });
+
+    this._authS.getUserName().subscribe(name => {
+      this.userName = name || '';
+    });
+
+    this._authS.getUserType().subscribe(userType => {
+      this.isAdmin = userType === 'admin'; // Dynamically update isAdmin
+    });
   }
   logout() {
     this._authS.logout();
+
     this._router.navigateByUrl('/home');
+
   }
 
   onSearch(event:any){
@@ -38,6 +51,7 @@ export class NavbarComponent {
 
   }
   searchCategory(id:string){
+    this.searchTerm="";
     this._router.navigateByUrl("/products?categoryId="+id!);
   }
 }

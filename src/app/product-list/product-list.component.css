@@ -1,0 +1,98 @@
+
+* {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  padding: 10px 40px; /* px-10 py-2 equivalent */
+}
+
+.filters {
+  width: 25%; /* w-3/12 (3/12 = 25%) */
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.custom-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.custom-select:disabled {
+  color: #999;
+}
+
+
+.products-section {
+  flex: 1; /* flex-1 to take remaining space */
+}
+
+.products-grid {
+  display: flex;
+  flex-wrap: wrap; /* flex-wrap to allow wrapping */
+  gap: 10px; /* gap-2 (Tailwind equivalent) */
+}
+
+.product-card {
+  width: 25%; /* w-3/12 (3/12 = 25%) */
+  padding: 10px;
+  background-color: #f4f4f4;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.no-products {
+  text-align: center;
+  font-size: 18px;
+  color: gray;
+  margin-top: 20px;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination-btn {
+  background-color: #007bff;  /* Blue color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.pagination-btn:hover {
+  background-color: #0056b3;  /* Darker blue on hover */
+}
+
+.pagination-btn:active {
+  transform: scale(0.95);  /* Slight shrink on click */
+}
+
+.pagination-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}

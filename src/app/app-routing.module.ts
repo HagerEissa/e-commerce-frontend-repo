@@ -11,6 +11,10 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { authGuard } from './guards/auth.guard';
+import { DashboardComponent } from './manage/dashboard/dashboard.component';
+import { adminGuard } from './guards/admin.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -20,51 +24,68 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate:[authGuard]
   },
   {
     path: 'admin/categories',
-    component: CategoriesComponent
+    component: CategoriesComponent,
+    canActivate:[adminGuard]
   },
   {
     path: 'admin/categories/add',
-    component: CategoryFormComponent
+    component: CategoryFormComponent,
+    canActivate:[adminGuard]
   },
   {
     path: 'admin/categories/:id', //to update
-    component: CategoryFormComponent
+    component: CategoryFormComponent,
+    canActivate:[adminGuard]
   },
   {
     path: 'admin/brands',
-    component: BrandsComponent
+    component: BrandsComponent,
+    canActivate:[adminGuard]
   },
   {
     path: 'admin/brands/add',
-    component: BrandFormComponent
+    component: BrandFormComponent,
+    canActivate:[adminGuard]
   },
   {
     path: 'admin/brands/:id', //to update,delete
-    component: BrandFormComponent
+    component: BrandFormComponent,
+    canActivate:[adminGuard]
   },
   {
     path: 'admin/products',
-    component: ProductsComponent
+    component: ProductsComponent,
+    canActivate:[adminGuard]
   },
   {
     path: 'admin/products/add',
-    component: ProductFormComponent
+    component: ProductFormComponent,
+    canActivate:[adminGuard]
   },
   {
     path: 'admin/products/:id', //to update,delete
-    component: ProductFormComponent
+    component: ProductFormComponent,
+    canActivate:[adminGuard]
   },
   {
     path: 'products',
-    component: ProductListComponent
+    component: ProductListComponent,
+    canActivate:[authGuard]
   },
   {
     path: 'home/product/:id',
-    component: ProductDetailsComponent
+    component: ProductDetailsComponent,
+    canActivate:[authGuard]
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate:[authGuard]
   },
   {
     path: 'register',
@@ -73,7 +94,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  }
+  },
+  {
+    path: 'adminDashboard',
+    component: DashboardComponent,
+    canActivate:[adminGuard]
+  },
 ];
 
 @NgModule({

@@ -1,1 +1,50 @@
-<p>product-list works!</p>
+<div class="container">
+  <div class="filters">
+      <h6>Filters</h6>
+      <div class="filter-container">
+        <label for="category">Category</label>
+        <select id="category" class="custom-select" name="categoryId" [(ngModel)]="categoryId" (change)="getProducts()">
+          <ng-container *ngFor="let c of categories; let i=index">
+            <option [value]="c._id">{{c.name}}</option>
+          </ng-container>
+        </select>
+
+
+      </div>
+  </div>
+  <div class="products-section">
+      <h6>Products</h6>
+
+      <label for="category">Order By</label>
+        <select class="custom-select" (change)="orderChange($event)">
+          <option value="asc">price low to high</option>
+          <option value="desc">price high to low</option>
+        </select>
+
+      <div *ngIf="products.length > 0; else noProductsMessage" class="products-grid">
+        <ng-container *ngFor="let p of products; let i=index">
+          <div class="product-card">
+            <app-product-card [product]="p"></app-product-card>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Template to show when there are no products -->
+      <ng-template #noProductsMessage>
+        <p class="no-products">No products available.</p>
+      </ng-template>
+
+      <!-- <div>
+        <button (click)="changePage(page+1)" [disabled]="!isNext">next</button>
+        <button (click)="changePage(page-1)" [disabled]="page==1">previous</button>
+      </div> -->
+      <div class="pagination-container">
+        <button (click)="changePage(page-1)" [disabled]="page==1" class="pagination-btn">
+            Previous
+        </button>
+        <button (click)="changePage(page+1)" [disabled]="!isNext" class="pagination-btn">
+            Next
+        </button>
+    </div>
+  </div>
+</div>
